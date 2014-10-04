@@ -9,15 +9,7 @@ var crypto = require('crypto');
 storage.initSync();
 
 app.get('/', function(req, res) {
-  res.set({'Content-Type':'application/json'});
-  var orders = storage.getItem('orders');
-  var open = [];
-  for (var i = 0; i < orders.length; i++) {
-    if (orders[i].status === 'Pending') {
-      open.push(orders[i]);
-    }
-  }
-  res.send(open);
+  res.send(200);
 });
 
 app.get('/hash/:hash', function(req, res) {
