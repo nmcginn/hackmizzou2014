@@ -1,23 +1,40 @@
 // requires
 var express = require('express');
 var app = express();
+var parser = require('body-parser');
 var storage = require('node-persist');
 var uuid = require('node-uuid');
 var crypto = require('crypto');
 
 // initialization code
 storage.initSync();
+app.use(parser.urlencoded({extended:true}));
+
+app.post('/register', function(req, res) {
+  console.log(req.body);
+  // id, username, fname, lname, address, phone, email, lat, long, balance, rating, password, guid
+  var users = storage.getItem('users');
+  var new_user = JSON.parse(req.body.user);
+  new_user.id = getNewUserId(new_user.username);
+  new_user.balance = 0.0;
+  new_user.lat = 0.0;
+  new_user.long = 0.0;
+  new_user.rating = 0;
+  if (new_user.id) {
+    var sha = crypto.createHash('sha512');
+    console.log(new_user.password);
+    sha.update(new_user.password);
+    new_user.password = sha.digest('base64');
+    users.push(new_user);
+    storage.setItem('users',users);
+    res.send(new_user);
+  } else {
+    res.send(400);
+  }
+});
 
 app.get('/', function(req, res) {
-  res.set({'Content-Type':'application/json'});
-  var orders = storage.getItem('orders');
-  var open = [];
-  for (var i = 0; i < orders.length; i++) {
-    if (orders[i].status === 'Pending') {
-      open.push(orders[i]);
-    }
-  }
-  res.send(open);
+  res.send(200);
 });
 
 app.get('/hash/:hash', function(req, res) {
@@ -138,10 +155,12 @@ app.get('/twilio', function(req, res) {
   res.send('<Response><Message>Coffee makes me poop</Message></Response>');
 });
 
+// start the server
 var server = app.listen(8080, function() {
   console.log('Listening on port %d', server.address().port);
 });
 
+// start utility methods
 function checkToken(user, token) {
   var valid = false;
   var users = storage.getItem('users');
@@ -181,4 +200,14 @@ function dbSetup() {
       {'id':1,'driver':'mrdave','fat_fuck':'mrjohn','status':'Accepted'}
     ]
   );
+}
+
+function getNewUserId(username) {
+  var users = storage.getItem('users');
+  var id = 0;
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].id >= id) id = users[i].id + 1;
+    if (username === users[i].username) return false;
+  }
+  return id;
 }

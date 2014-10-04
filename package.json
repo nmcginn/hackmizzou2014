@@ -7,6 +7,7 @@
     "express":"4.x",
     "twilio":"1.7.x",
     "node-persist":"0.0.2",
-    "node-uuid":"1.4.1"
+    "node-uuid":"1.4.1",
+    "body-parser":"1.9.x"
   }
 }
