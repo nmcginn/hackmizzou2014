@@ -141,17 +141,26 @@ app.get('/orders/:username', function(req, res) {
 // create order / select item
 // input - post request in form of json with what was ordered and the quantity and special requests
 // returns payment object
-app.post('/orders/new', function(req, res) {
-    res.set({'Constent-Type':'text/html'});
-    res.send("<Response><Message>200</Message></Response>"); // should return object later
+app.post('/order/new', function(req, res) {
+    res.set({'Content-Type':'text/html'});
+    // create the order in the database
+    var orders = app.get('order');
+    newOrder = JSON.parse(req);
+    var uuid = uuid.v4();
+    newOrder.elements[0].orderID = uuid;
+    newOrderStr = JSON.stringify(newOrder);
+    orders.push(newOrderStr);
+    app.set('orders',orders);
+    res.send("<Response><Message>200</Message></Response>"); // should return payment object later
 });
 
 // confirm order / make payment
 // get request confirmation of order
 // returns 200 on confirmation
 app.get('/order/confirmation', function(req, res) {
-    res.set({'Constent-Type':'text/html'});
-    // do stuff
+    res.set({'Content-Type':'text/html'});
+    // process the payment
+    // subtract from consumer account
     res.send("<Response><Message>200</Message></Response>");
 });
 
@@ -194,3 +203,14 @@ function getNewUserId(username) {
   }
   return id;
 }
+
+function ProfPic (req, res){
+      res.set({'Content-Type':'application/json'});
+        for(var i =0; i<users.length; i++){
+                if(user===users[i].username){
+                          var profPic=users[i].profpic}
+                  }
+          res.send(profPic);
+}
+
+app.get('/profpic/:username', ProfPic);
