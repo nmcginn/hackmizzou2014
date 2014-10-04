@@ -109,15 +109,33 @@ app.get('/openorders', function(req, res) {
   res.send(open);
 });
 
-app.get('/acceptorder/:uuid', function(req, res) {
-  res.set({'Content-Type':'application/json'});
-  twilio.messages.create({
-    to: '+16302169653',
-    from: '+16303184442',
-    body: 'Your fLazy order has been accepted by a driver!',
-  }, function(err, message) {
-    console.log(message.sid);
-  });
+app.get('/acceptorder/:driver/:uuid', function(req, res) {
+  var token = req.get('token');
+  var authenticated = checkToken(req.params.driver, token);
+  if (authenticated) {
+    res.set({'Content-Type':'application/json'});
+    var orders = storage.getItem('orders');
+    var valid = false;
+    for (var i = 0; i < orders.length; i++) {
+      if (orders.id === req.params.uuid) {
+        orders[i].status = 'Accepted';
+        orders[i].driver = req.params.driver;
+        valid = true;
+      }
+    }
+    if (valid) {
+      storage.setItem('orders',orders);
+      twilio.messages.create({
+        to: '+16302169653',
+        from: '+16303184442',
+        body: 'Your fLazy order has been accepted by a driver!',
+      }, function(err, message) {
+        console.log(message.sid);
+      });
+    }
+  } else {
+    res.send(403);
+  }
 });
 
 app.get('/orders/:username', function(req, res) {
