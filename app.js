@@ -59,6 +59,24 @@ app.get('/account/:user', function(req, res) {
   }
 });
 
+app.get('/orders/:username', function(req, res) {
+  var token = req.get('token');
+  var authenticated = checkToken(req.params.username, token);
+  if (authenticated) {
+    var my_orders = [];
+    var all_orders = storage.getItem('orders');
+    for (var i = 0; i < all_orders.length; i++) {
+      if (req.params.username === all_orders[i].fat_fuck ||
+          req.params.username === all_orders[i].driver) {
+        my_orders.push(all_orders[i]);
+      }
+    }
+    res.send(my_orders);
+  } else {
+    res.send(403);
+  }  
+});
+
 app.get('/twilio', function(req, res) {
   res.set({'Content-Type':'text/xml'});
   res.send('<Response><Message>Coffee makes me poop</Message></Response>');
@@ -100,6 +118,11 @@ function dbSetup() {
       {"id":1,"lat":0.0,"long":0.0,"menu_id":1},
       {"id":2,"lat":0.0,"long":0.0,"menu_id":1},
       {"id":3,"lat":0.0,"long":0.0,"menu_id":1}
+    ]
+  );
+  storage.setItem('orders',
+    [
+      {'id':1,'driver':'mrdave','fat_fuck':'mrjohn','status':'Accepted'}
     ]
   );
 }
