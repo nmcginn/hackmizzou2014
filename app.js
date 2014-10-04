@@ -7,7 +7,6 @@ var crypto = require('crypto');
 
 // initialization code
 storage.initSync();
-dbSetup();
 
 app.get('/', function(req, res) {
   res.set({'Content-Type':'application/json'});
@@ -19,6 +18,18 @@ app.get('/hash/:hash', function(req, res) {
   var sha = crypto.createHash('sha512');
   sha.update(req.params.hash);
   res.send(sha.digest('base64'));
+});
+
+app.get('/menu/:restaurant', function(req, res) {
+  console.log('trying to get ' + req.params.restaurant);
+  var menu = storage.getItem(req.params.restaurant);
+  if (menu) {
+    res.set({'Content-Type':'application/json'});
+    console.log(menu);
+    res.send(menu);
+  } else {
+    res.send(404);
+  }
 });
 
 app.get('/login/:user/:password', function(req, res) {
