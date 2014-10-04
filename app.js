@@ -88,6 +88,23 @@ app.get('/orders/:username', function(req, res) {
   }  
 });
 
+// create order / select item
+// input - post request in form of json with what was ordered and the quantity and special requests
+// returns payment object
+app.post('/orders/new', function(req, res) {
+    res.set({'Constent-Type':'text/html'});
+    res.send("<Response><Message>200</Message></Response>"); // should return object later
+});
+
+// confirm order / make payment
+// get request confirmation of order
+// returns 200 on confirmation
+app.get('/order/confirmation', function(req, res) {
+    res.set({'Constent-Type':'text/html'});
+    // do stuff
+    res.send("<Response><Message>200</Message></Response>");
+});
+
 app.get('/twilio', function(req, res) {
   res.set({'Content-Type':'text/xml'});
   res.send('<Response><Message>Coffee makes me poop</Message></Response>');
