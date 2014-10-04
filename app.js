@@ -10,7 +10,14 @@ storage.initSync();
 
 app.get('/', function(req, res) {
   res.set({'Content-Type':'application/json'});
-  res.send({});
+  var orders = storage.getItem('orders');
+  var open = [];
+  for (var i = 0; i < orders.length; i++) {
+    if (orders[i].status === 'Pending') {
+      open.push(orders[i]);
+    }
+  }
+  res.send(open);
 });
 
 app.get('/hash/:hash', function(req, res) {
@@ -25,7 +32,7 @@ app.get('/menu/:restaurant', function(req, res) {
   var menu = storage.getItem(req.params.restaurant);
   if (menu) {
     res.set({'Content-Type':'application/json'});
-    console.log(menu);
+    //console.log(menu);
     res.send(menu);
   } else {
     res.send(404);
@@ -68,6 +75,18 @@ app.get('/account/:user', function(req, res) {
   } else {
     res.send(403);
   }
+});
+
+app.get('/openorders', function(req, res) {
+  res.set({'Content-Type':'application/json'});
+  var open = [];
+  var orders = storage.getItem('orders');
+  for (var i = 0; i < orders.length; i++) {
+    if (orders[i].status === 'Pending') {
+      open.push(orders[i]);
+    }
+  }
+  res.send(open);
 });
 
 app.get('/orders/:username', function(req, res) {
