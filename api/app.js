@@ -160,26 +160,23 @@ app.get('/orders/:username', function(req, res) {
 // input - post request in form of json with what was ordered and the quantity and special requests
 // returns payment object
 app.post('/order/new', function(req, res) {
-    res.set({'Content-Type':'text/html'});
+    res.set({'Content-Type':'application/json'});
     // create the order in the database
-    var orders = app.get('order');
-    newOrder = JSON.parse(req);
+    var orders = storage.getItem('orders');
+    newOrder = JSON.parse(req.body.order);
     var uuid = uuid.v4();
-    newOrder.elements[0].orderID = uuid;
-    newOrderStr = JSON.stringify(newOrder);
-    orders.push(newOrderStr);
-    app.set('orders',orders);
-    res.send("<Response><Message>200</Message></Response>"); // should return payment object later
+    newOrder.id = uuid;
+    orders.push(newOrder);
+    storage.setItem('orders',orders);
+    res.send(newOrder); // should return payment object later
 });
 
 // confirm order / make payment
 // get request confirmation of order
 // returns 200 on confirmation
 app.get('/order/confirmation', function(req, res) {
-    res.set({'Content-Type':'text/html'});
-    // process the payment
-    // subtract from consumer account
-    res.send("<Response><Message>200</Message></Response>");
+    res.set({'Content-Type':'application/json'});
+    // TODO: calculate payment information info
 });
 
 app.get('/twilio', function(req, res) {
