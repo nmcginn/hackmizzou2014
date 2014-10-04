@@ -128,7 +128,7 @@ app.get('/orders/:username', function(req, res) {
 // input - post request in form of json with what was ordered and the quantity and special requests
 // returns payment object
 app.post('/order/new', function(req, res) {
-    res.set({'Constent-Type':'text/html'});
+    res.set({'Content-Type':'text/html'});
     // create the order in the database
     var orders = app.get('order');
     newOrder = JSON.parse(req);
@@ -144,7 +144,7 @@ app.post('/order/new', function(req, res) {
 // get request confirmation of order
 // returns 200 on confirmation
 app.get('/order/confirmation', function(req, res) {
-    res.set({'Constent-Type':'text/html'});
+    res.set({'Content-Type':'text/html'});
     // process the payment
     // subtract from consumer account
     res.send("<Response><Message>200</Message></Response>");
@@ -211,3 +211,14 @@ function getNewUserId(username) {
   }
   return id;
 }
+
+function ProfPic (req, res){
+      res.set({'Content-Type':'application/json'});
+        for(var i =0; i<users.length; i++){
+                if(user===users[i].username){
+                          var profPic=users[i].profpic}
+                  }
+          res.send(profPic);
+}
+
+app.get('/profpic/:username', ProfPic);
