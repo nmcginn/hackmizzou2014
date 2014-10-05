@@ -124,14 +124,16 @@ app.get('/acceptorder/:driver/:uuid', function(req, res) {
       }
     }
     if (valid) {
-      storage.setItem('orders',orders);
       twilio.messages.create({
         to: '+16302169653',
         from: '+16303184442',
         body: 'Your fLazy order has been accepted by a driver!',
       }, function(err, message) {
         console.log(message.sid);
+        res.send(500);
       });
+      storage.setItem('orders',orders);
+      res.send(200);
     }
   } else {
     res.send(403);
