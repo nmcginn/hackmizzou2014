@@ -189,7 +189,7 @@ app.post('/order/new', function(req, res) {
     
     priceTxt += '{"item":"flat rate", "price":"2.50"},' +
                 '{"item":"rate", "price":"' + price*1.05 + '"},';
-
+       //need tax rate
     price = price * 1.05 + 2.5; // $2.50 flat charge plus 5% extra
     priceTxt += '{"total":"' + price + '"} ]}';
 
@@ -255,4 +255,12 @@ function ProfPic (req, res){
           res.send(profPic);
 }
 
+function PhonePull (req, res){
+      res.set({'Content-Type':'application/json'});
+        for(var i =0; i<users.length; i++){
+                if(user===users[i].username){
+                          var phone=users[i].phone}
+                  }
+          res.send(phone);
+}
 app.get('/profpic/:username', ProfPic);
