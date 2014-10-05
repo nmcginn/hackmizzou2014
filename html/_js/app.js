@@ -25,7 +25,7 @@ app.controller('LoginCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.login = function() {
       var user = document.getElementById('username').value;
       var password = document.getElementById('password').value;
-      $http.get('http://hackmizzou.cloudapp.net:8080/login/' + user + '/' + password)
+      $http.get('http://hackmizzou.cloudapp.net/login/' + user + '/' + password)
         .success(function(data, status) {
           console.log(data);
         })
