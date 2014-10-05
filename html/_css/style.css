@@ -196,6 +196,13 @@ table.orders tr.clickableRow:hover td {
     background: #f8ebce;
 }
 
+.column {
+    width: 50%;
+}
+
+.first { float: left; }
+.second { float: right; }
+
 .clear {
 	display: block;
 	clear: both;

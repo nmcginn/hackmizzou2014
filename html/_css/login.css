@@ -99,7 +99,7 @@ a { text-decoration: none; }
     border-bottom-right-radius: 10px;
 }
 
-#login { margin-top: 10%; }
+#login { margin-top: 3%; }
 
 .branding {
     width: 60%;
@@ -131,7 +131,7 @@ a { text-decoration: none; }
     top: 58px;
 }
 
-#loginForm {
+#loginForm, #registerForm {
     background-color: #fff;
     border-radius: 20px;
     border: 10px solid #eee;
@@ -145,19 +145,20 @@ a { text-decoration: none; }
     box-shadow:         3px 3px 5px 2px rgba(0,0,0,0.2);
 }
 
-#loginForm fieldset {
+#loginForm fieldset, #registerForm fieldset {
     border: 0px;
-    width: 90%;
+    width: 95%;
     display: block;
     margin: 0 auto;
 }
 
-#loginForm h2 {
+#loginForm h2, #registerForm h2 {
     color: #333;
     margin: 5px 0 20px;
 }
 
-#loginForm input[type="text"], #loginForm input[type="password"] {
+#loginForm input[type="text"], #loginForm input[type="password"],
+#registerForm input[type="text"], #registerForm input[type="password"] {
     padding: 10px;
     display: block;
     margin: 0 auto;
@@ -165,24 +166,30 @@ a { text-decoration: none; }
     margin-bottom: 20px;
 }
 
-#loginForm fieldset#actions {
+#loginForm fieldset#actions, #registerForm fieldset#actions {
     text-align: center;
     margin: -15px auto -10px;
 }
 
-#loginForm input[type="submit"], #loginForm input[type="button"] {
+#loginForm input[type="submit"], #loginForm input[type="button"], #registerForm input[type="submit"] {
     margin: 0;
     border: 1px solid transparent;
     padding: 10px 20px;
-    margin: 0 2.25%;
     border-radius: 10px;
     -webkit-box-shadow: 0 5px 6px -6px black;
        -moz-box-shadow: 0 5px 6px -6px black;
             box-shadow: 0 5px 6px -6px black;
     color: #444;
     font-weight: bold;
-    width: 45%;
+    width: 100%;
 }
+
+.column {
+    width: 48%;
+}
+
+.first { float: left; }
+.last { float: right; }
 
 .clear {
     display: block;
