@@ -173,7 +173,7 @@ app.post('/order/new', function(req, res) {
     newOrder.id = uuid;
     orders.push(newOrder);
     storage.setItem('orders',orders);
-    res.send(newOrder); // should return payment object later
+    res.send(newOrder); // TODO: calculate payment information
 });
 
 // confirm order / make payment
@@ -181,7 +181,7 @@ app.post('/order/new', function(req, res) {
 // returns 200 on confirmation
 app.get('/order/confirmation', function(req, res) {
     res.set({'Content-Type':'application/json'});
-    // TODO: calculate payment information info
+    // TODO: adjust balances and update tables
 });
 
 app.get('/twilio', function(req, res) {
