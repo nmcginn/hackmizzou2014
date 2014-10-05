@@ -87,3 +87,15 @@ html, body {
     font-weight: bold;
     width: 100%;
 }
+
+#login .column {
+    width: 48%;
+}
+
+.first { float: left; }
+.last { float: right; }
+
+.clear {
+    display: block;
+    clear: both;
+}
