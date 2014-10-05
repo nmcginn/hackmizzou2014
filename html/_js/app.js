@@ -3,16 +3,12 @@ var app = angular.module('flazy', ['ngRoute']);
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: '_templates/work.html', 
+      templateUrl: '_templates/index.html', 
       controller: 'HomeCtrl'
     })
-    .when('/about', {
-      templateUrl: '_templates/about.html', 
-      controller: 'HomeCtrl'
-    })
-    .when('/details/:id', {
-      templateUrl: '_templates/details.html', 
-      controller: 'DetailsCtrl'
+    .when('/driver_dash', {
+      templateUrl: '_templates/driver_dash.html', 
+      controller: 'DriverDashCtrl'
     })
     .otherwise({ redirectTo: '/' });
 }]);

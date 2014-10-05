@@ -9,6 +9,7 @@
 
     <link href="_css/normalize.css" rel="stylesheet">
     <link href="_css/login.css" rel="stylesheet">
+    <link href="_css/style.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
 
@@ -22,69 +23,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body ng-app="flazy">
 
-    <section id="intro">
-      <div class="container">
-        <img src="_img/logo_colored.png" alt="logo" class="logo" />
-        <h1>fLazy</h1>
-        <h2>Food for the lazy.</h2>
-      </div>
-    </section>
-    <section id="login" ng-controller="LoginCtrl">
-      <div class="container">
-        <div class="branding">
-          <h1>fLazy <span>- food for the lazy.</span></h1>
-          <img src="_img/logo_colored.png" alt="logo" class="logo" />
-        </div>
-        <div class="clear"></div>
-        <form id="loginForm" ng-show="isLogin">
-            <h2>Log In</h2>
-            <fieldset id="inputs">
-                <input id="username" type="text" placeholder="Username" autofocus required>   
-                <input id="password" type="password" placeholder="Password" required>
-            </fieldset>
-            <fieldset id="actions">
-              <div class="column first">
-                <input type="submit" id="submit" ng-click="login()" value="Log in">
-              </div>
-              <div class="column last">
-                <input type="button" id="register" ng-click="flipPage()" value="Register">
-              </div>
-            </fieldset>
-        </form>
-        <form id="registerForm" ng-hide="isLogin">
-            <h2>Register</h2>
-            <fieldset id="inputs">
-              <div class="column first">
-                <input id="firstName" type="text" placeholder="First Name" autofocus required>
-              </div>
-              <div class="column last">
-                <input id="lastName" type="text" placeholder="Last Name" autofocus required>
-              </div> 
-              <input id="username" type="text" placeholder="Username" required>   
-              <input id="password" type="password" placeholder="Password" required>
-              <input id="retypePassword" type="password" placeholder="Retype Password" required>
-              <div class="clear"></div>
-              <div class="column first">
-                <input id="email" type="text" placeholder="Email address" required>
-              </div>
-              <div class="column last">
-                <input id="phone" type="text" placeholder="Phone Number" required>
-              </div>
-                <input id="address" type="text" placeholder="Street address" required>
-            </fieldset>
-            <fieldset id="actions">
-              <div class="column first">
-                <input type="button" id="backToLogin" ng-click="flipPage()" value="Back to Login">
-              </div>
-              <div class="column last">
-                <input type="submit" id="submit" value="Create Account">
-              </div>
-            </fieldset>
-        </form>
-      </div>
-    </section>
+  <div ng-view></div>
 
   </body>
 </html>
