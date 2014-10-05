@@ -17,7 +17,7 @@ app.config(['$routeProvider', function($routeProvider) {
     .otherwise({ redirectTo: '/' });
 }]);
 
-app.controller('LoginCtrl', ['$scope', '$http', function($scope) {
+app.controller('LoginCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.isLogin = true;
     $scope.flipPage = function() {
       $scope.isLogin = !$scope.isLogin;
