@@ -1,0 +1,74 @@
+    <section id="top">
+      <div class="container">
+          <h1>fLazy</h1>
+          <img src="_img/logo_colored.png" alt="logo" class="logo" />
+          <div class="clear"></div>
+      </div>
+    </section>
+    <section id="nav" ng-controller="">
+      <div class="container">
+        <span>food for the lazy.</span>
+        <ul>
+          <li><a href="#driver_dash">Nearby Orders</a></li>
+          <li><a href="">Your Orders</a></li>
+          <li><a href="#account">Your Account</a></li>
+        </ul>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <h2>Find some orders... <input type="button" value="Change Location" /></h2>
+        <!--
+        <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=11&center=38.9517%2C-92.3341&key=AIzaSyDx6Y87szgqxuzpOQGOB3jvL1TEehyJajI"></iframe> 
+        -->
+        <div id="map-canvas" class="smaller map"></div>
+        <h2>Your Account Settings</h2>
+        <div class="sidebar">
+          <span>Your balance:</span>
+          <span class="money">
+            $17.86
+          </span>
+          <span class="hr"></span>
+          <span>Your rating:</span>
+          <img src="_img/star.png" class="star" alt="rating" />
+          <img src="_img/star.png" class="star" alt="rating" />
+          <img src="_img/star.png" class="star" alt="rating" />
+          <img src="_img/star.png" class="star" alt="rating" />
+        </div>
+        <form id="account">
+            <fieldset id="inputs">
+              <div class="column first">
+                <span>First Name:</span>
+                <input id="firstName" type="text" placeholder="Lauren">
+              </div>
+              <div class="column last">
+                <span>Last Name:</span>
+                <input id="lastName" type="text" placeholder="Kroenung">
+              </div> 
+              <span>Username:</span>
+              <input id="username" type="text" placeholder="lkroenung">
+              <span>Password:</span>
+              <input id="password" type="password" placeholder="Password">
+              <span>Retype password:</span>
+              <input id="retypePassword" type="password" placeholder="Retype Password">
+              <div class="clear"></div>
+              <div class="column first">
+                <span>Email address:</span>
+                <input id="email" type="text" placeholder="lnk7x9@mst.edu">
+              </div>
+              <div class="column last">
+                <span>Phone #</span>
+                <input id="phone" type="text" placeholder="(314) 540-3779">
+              </div>
+                <span>Street Address</span>
+                <input id="address" type="text" placeholder="13431 Sunset Meadows Lane">
+            </fieldset>
+            <fieldset id="actions">
+              <div class="column" style="margin: 0 auto;">
+                <input type="submit" id="submit" value="Change account settings">
+              </div>
+            </fieldset>
+        </form>
+
+      </div>
+    </section>

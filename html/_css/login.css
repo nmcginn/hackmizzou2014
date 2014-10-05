@@ -87,3 +87,25 @@ html, body {
     font-weight: bold;
     width: 100%;
 }
+
+#login .column {
+    width: 48%;
+}
+
+.first { float: left; }
+.last { float: right; }
+
+.clear {
+    display: block;
+    clear: both;
+}
+
+@media screen and (max-width: 1100px) {
+    #loginForm, #registerForm, .branding { width: 90%; }
+}
+
+@media screen and (max-width: 725px) {
+    #login h1 span { display: none; }
+    #registerForm .column { width: 100%; float: none; }
+    #registerForm input[type="submit"] { margin-top: 15px; }
+}

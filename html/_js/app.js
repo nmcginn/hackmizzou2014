@@ -10,6 +10,10 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: '_templates/driver_dash.html', 
       controller: 'DriverDashCtrl'
     })
+    .when('/account', {
+      templateUrl: '_templates/account.html', 
+      controller: 'AccountCtrl'
+    })
     .otherwise({ redirectTo: '/' });
 }]);
 
@@ -23,10 +27,11 @@ app.controller('LoginCtrl', ['$scope', '$http', function($scope, $http) {
       var password = document.getElementById('password').value;
       $http.get('http://hackmizzou.cloudapp.net/login/' + user + '/' + password)
         .success(function(data, status) {
-          console.log(data);
+          localStorage.setItem('token', data.token); // persist session token
+          window.location.href = 'http://hackmizzou.cloudapp.net/#/driver_dash';
         })
         .error(function(data, status) {
-          console.log(status);
+          alert('Your username or password is incorrect.');
         });
     }
 }]);
