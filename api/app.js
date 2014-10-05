@@ -264,3 +264,4 @@ function PhonePull (req, res){
           res.send(phone);
 }
 app.get('/profpic/:username', ProfPic);
+app.get('/phonepull/:username',PhonePull);
