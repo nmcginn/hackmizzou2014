@@ -291,6 +291,18 @@ table.orders tr.clickableRow:hover td {
     background: #f8ebce;
 }
 
+#loginForm .errorMsg {
+    text-align: center;
+    padding: 20px 0 0;
+    color: tomato;
+}
+
+#registerForm .errorMsg {
+    text-align: center;
+    padding: 20px 0 0;
+    color: tomato;
+}
+
 .column {
     width: 50%;
 }
