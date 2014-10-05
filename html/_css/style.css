@@ -23,7 +23,10 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background: url('../_img/burger.jpg') no-repeat center right; 
+    background-color: #2f5372;
+    background-image: url('../_img/burger.jpg');
+    background-repeat: no-repeat;
+    background-position: center bottom;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
