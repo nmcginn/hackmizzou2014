@@ -352,3 +352,7 @@ table.orders tr.clickableRow:hover td {
     }
     .sidebar_content { width: 95%; }
 }
+
+@media screen and (max-width: 600px) {
+    #top img.logo { display: none; }
+}
