@@ -47,6 +47,11 @@ app.get('/hash/:hash', function(req, res) {
   res.send(sha.digest('base64'));
 });
 
+app.get('/restaurants', function(req, res) {
+    res.set({'Content-Type':'application/json'});
+    res.send(storage.getItem(); // [TODO] return json file of all available restaraunts
+});
+
 app.get('/menu/:restaurant', function(req, res) {
   console.log('trying to get ' + req.params.restaurant);
   var menu = storage.getItem(req.params.restaurant);
