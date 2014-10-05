@@ -19,7 +19,7 @@
                 <input type="button" id="register" ng-click="flipPage()" value="Register">
               </div>
             </fieldset>
-            <div class="errorMsg">Your password is wrong.</div>
+            <div ng-show="showError" class="errorMsg">Your password is wrong.</div>
         </form>
         <form id="registerForm" ng-hide="isLogin">
             <h2>Register</h2>
@@ -50,7 +50,7 @@
                 <input type="submit" id="submit" value="Create Account">
               </div>
             </fieldset>
-            <div class="errorMsg">Your password is wrong.</div>
+            <div ng-show="showError" class="errorMsg">Your password is wrong.</div>
         </form>
       </div>
     </section>

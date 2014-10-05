@@ -23,10 +23,13 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.controller('LoginCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.isLogin = true;
+    $scope.showError = false;
     $scope.flipPage = function() {
       $scope.isLogin = !$scope.isLogin;
+      $scope.showError = false;
     }
     $scope.login = function() {
+      $scope.showError = false;
       var user = document.getElementById('username').value;
       var password = document.getElementById('password').value;
       $http.get('http://hackmizzou.cloudapp.net/login/' + user + '/' + password)
@@ -35,7 +38,8 @@ app.controller('LoginCtrl', ['$scope', '$http', function($scope, $http) {
           window.location.href = 'http://hackmizzou.cloudapp.net/#/driver_dash';
         })
         .error(function(data, status) {
-          alert('Your username or password is incorrect.');
+          //alert('Your username or password is incorrect.');
+          $scope.showError = true;
         });
     }
 }]);

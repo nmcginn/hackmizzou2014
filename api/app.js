@@ -87,7 +87,7 @@ app.get('/login/:user/:password', function(req, res) {
   if (validuser) {
     res.send({'token':token});
   } else {
-    res.send({'error':'invalid username or password'});
+    res.send(403);
   }
 });
 
