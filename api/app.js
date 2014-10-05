@@ -173,7 +173,15 @@ app.post('/order/new', function(req, res) {
     newOrder.id = uuid;
     orders.push(newOrder);
     storage.setItem('orders',orders);
-    res.send(newOrder); // TODO: calculate payment information
+    
+    // calculate payment info
+    var price = 0;
+    for (var i = 0; i < newOrder.items.length; i++) {
+        price = price + newOrder.items[i].count * newOrder.items[i].price;
+    }   
+    price = price * 1.05 + 2.5;
+     
+    res.send(price);
 });
 
 // confirm order / make payment
