@@ -8,7 +8,7 @@
     <title>fLazy - food for the lazy.</title>
 
     <link href="_css/normalize.css" rel="stylesheet">
-    <link href="_css/style.css" rel="stylesheet">
+    <link href="_css/login.css" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
 
@@ -24,69 +24,62 @@
   </head>
   <body>
 
-    <section id="top">
+    <section id="intro">
       <div class="container">
-          <h1>fLazy</h1>
+        <img src="_img/logo_colored.png" alt="logo" class="logo" />
+        <h1>fLazy</h1>
+        <h2>Food for the lazy.</h2>
+      </div>
+    </section>
+    <section id="login" ng-controller="LoginCtrl">
+      <div class="container">
+        <div class="branding">
+          <h1>fLazy <span>- food for the lazy.</span></h1>
           <img src="_img/logo_colored.png" alt="logo" class="logo" />
-          <div class="clear"></div>
-      </div>
-    </section>
-    <section id="nav" ng-controller="">
-      <div class="container">
-        <span>food for the lazy.</span>
-        <ul>
-          <li><a href="">Nearby Orders</a></li>
-          <li><a href="">Your Orders</a></li>
-          <li><a href="">Your Account</a></li>
-        </ul>
-      </div>
-    </section>
-    <section id="content">
-      <div class="container">
-        <h2>Find some orders... <input type="button" value="Change Location" /></h2>
-        <iframe class="map" rameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Columbia%2C%20MO%2C%20United%20States&key=AIzaSyDx6Y87szgqxuzpOQGOB3jvL1TEehyJajI"></iframe>
-        <h2>Most Recent Orders</h2>
-        <table class="orders">
-          <thead>
-            <tr>
-              <th>Order #</th>
-              <th>Restaurant</th>
-              <th>Total</th>
-              <th>Address</th>
-              <th>ZIP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="clickableRow">
-              <td>1</td>
-              <td>McDonald's</td>
-              <td>$5.68</td>
-              <td>4 Fountain Court</td>
-              <td>63033</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>2</td>
-              <td>McDonald's</td>
-              <td>$7.53</td>
-              <td>1979 Emily Drive, Apt A</td>
-              <td>65401</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>3</td>
-              <td>McDonald's</td>
-              <td>$6.21</td>
-              <td>2008 Junipter Drive</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-          </tbody>
-        </table>
+        </div>
+        <div class="clear"></div>
+        <!--
+        <form id="loginForm">
+            <h2>Log In</h2>
+            <fieldset id="inputs">
+                <input id="username" type="text" placeholder="Username" autofocus required>   
+                <input id="password" type="password" placeholder="Password" required>
+            </fieldset>
+            <fieldset id="actions">
+              <div class="column first">
+                <input type="submit" id="submit" value="Log in">
+              </div>
+              <div class="column last">
+                <input type="button" id="register" value="Register">
+              </div>
+            </fieldset>
+        </form>
+        -->
+        <form id="registerForm">
+            <h2>Register</h2>
+            <fieldset id="inputs">
+              <div class="column first">
+                <input id="firstName" type="text" placeholder="First Name" autofocus required>
+              </div>
+              <div class="column last">
+                <input id="lastName" type="text" placeholder="Last Name" autofocus required>
+              </div> 
+              <input id="username" type="text" placeholder="Username" required>   
+              <input id="password" type="password" placeholder="Password" required>
+              <input id="retypePassword" type="password" placeholder="Retype Password" required>
+              <div class="clear"></div>
+              <div class="column first">
+                <input id="email" type="text" placeholder="Email address" required>
+              </div>
+              <div class="column last">
+                <input id="phone" type="text" placeholder="Phone Number" required>
+              </div>
+                <input id="address" type="text" placeholder="Street address" required>
+            </fieldset>
+            <fieldset id="actions">
+                <input type="submit" id="submit" value="Create Account">
+            </fieldset>
+        </form>
       </div>
     </section>
 
