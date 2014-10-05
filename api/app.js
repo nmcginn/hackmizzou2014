@@ -9,7 +9,7 @@ var crypto = require('crypto');
 // initialization code
 storage.initSync();
 app.use(parser.urlencoded({extended:true}));
-app.use(express.static('html'));
+app.use(express.static('../html'));
 var twil_sid = 'ACbac69bddb9715cbdcc4efc98b3d76ef0';
 var twil_tok = storage.getItem('twilio_auth_token');
 var twilio = require('twilio')(twil_sid,twil_tok);
