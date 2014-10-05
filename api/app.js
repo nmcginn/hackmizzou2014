@@ -175,13 +175,18 @@ app.post('/order/new', function(req, res) {
     storage.setItem('orders',orders);
     
     // calculate payment info
+    var priceTxt = '{ "price" : [';
     var price = 0;
     for (var i = 0; i < newOrder.items.length; i++) {
         price = price + newOrder.items[i].count * newOrder.items[i].price;
+        priceTxt += '{"item":' + newOrder.items[i].item + ', "price":' + newOrder.items[i].price + '},';
     }   
-    price = price * 1.05 + 2.5;
-     
-    res.send(price);
+    price = price * 1.05 + 2.5; // $2.50 flat charge plus 5% extra
+    
+    priceTxt += ']}';
+    var priceObj = JSON.parse(priceTxt);
+
+    res.send(priceObj);
 });
 
 // confirm order / make payment
