@@ -197,8 +197,8 @@ app.post('/order/new', function(req, res) {
 // get request confirmation of order
 // returns 200 on confirmation
 app.get('/order/confirmation', function(req, res) {
-    res.set({'Content-Type':'application/json'});
-    // TODO: adjust balances and update tables
+    res.set({'Content-Type':'text/html'});
+    res.send('<Response><Message>200</Messages></Response>');
 });
 
 app.get('/twilio', function(req, res) {
