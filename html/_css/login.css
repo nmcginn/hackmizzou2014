@@ -28,6 +28,7 @@ body {
     background-image: url('../_img/burger.jpg');
     background-repeat: no-repeat;
     background-position: center bottom;
+    background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
