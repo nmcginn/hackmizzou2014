@@ -126,6 +126,9 @@ app.get('/acceptorder/:driver/:uuid', function(req, res) {
       if (orders[i].id == req.params.uuid) {
         orders[i].status = 'Accepted';
         orders[i].driver = req.params.driver;
+        orders[i].userRecieved = false;
+        orders[i].driverDelivered = false;
+        orders[i].completed = false;
         valid = true;
       }
     }
