@@ -4,7 +4,7 @@ app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
     .when('/', {
       templateUrl: '_templates/index.html', 
-      controller: 'HomeCtrl'
+      controller: 'LoginCtrl'
     })
     .when('/driver_dash', {
       templateUrl: '_templates/driver_dash.html', 
