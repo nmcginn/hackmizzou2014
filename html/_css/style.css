@@ -34,6 +34,11 @@ body {
     background-size: cover;
 }
 
+#map-canvas {
+    margin: 0px;
+    padding: 0px;
+}
+
 a { text-decoration: none; }
 
 #nav, #intro, #content {

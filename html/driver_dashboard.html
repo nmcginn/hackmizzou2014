@@ -21,6 +21,158 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx6Y87szgqxuzpOQGOB3jvL1TEehyJajI">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script type="text/javascript">
+      var map;
+      function initialize() {
+
+        var mapOptions = {
+          zoom: 11,
+          center: new google.maps.LatLng(38.955523, -92.234803)
+        };
+
+        var image = '_img/you.png';
+
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+        // Try HTML5 geolocation
+        if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = new google.maps.LatLng(position.coords.latitude,
+                                             position.coords.longitude);
+
+            var infowindow = new google.maps.Marker({
+              map: map,
+              position: pos,
+              icon: image
+            });
+
+            map.setCenter(pos);
+            map.setZoom(13);
+          }, function() {
+            handleNoGeolocation(true);
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleNoGeolocation(false);
+        }
+
+        var customer = new google.maps.LatLng(38.940381, -92.327738);
+        var customer2 = new google.maps.LatLng(38.940381, -92.387738);
+        var customer3 = new google.maps.LatLng(38.9454775, -92.3673301);
+        var customer4 = new google.maps.LatLng(38.9428771, -92.3093903);
+        var customer5 = new google.maps.LatLng(38.9572294, -92.3276227);
+
+        // var marker = new google.maps.Marker({
+        //     position: chicago,
+        //     map: map,
+        //     title: 'Hello World!',
+        //     animation: google.maps.Animation.DROP
+        // });
+
+        //map.setCenter(chicago);
+
+        var contentString = '<div id="content">'+
+        '<div id="siteNotice">'+
+        '</div>'+
+        '<h1 id="firstHeading" class="firstHeading">McDonald\'s Order</h1>'+
+        '<div id="bodyContent">'+
+        '<p><strong>Orderer:</strong> Lauren Kroenung</p>'+
+        '<p><strong>Street Address:</strong> 13431 Sunset Meadows Lane</p>'+
+        '<p><strong>Email:</strong> lnk7x9@mst.edu</p>'+
+        '<p><strong>Phone #:</strong> (314) 540-3779</p>'+
+        '</div>'+
+        '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var infowindow2 = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var infowindow3 = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var infowindow4 = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var infowindow5 = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position: customer,
+            map: map,
+            title: 'McDonald\'s'
+        });
+
+        var marker2 = new google.maps.Marker({
+            position: customer2,
+            map: map,
+            title: 'McDonald\'s'
+        });
+
+        var marker3 = new google.maps.Marker({
+            position: customer3,
+            map: map,
+            title: 'McDonald\'s'
+        });
+
+        var marker4 = new google.maps.Marker({
+            position: customer4,
+            map: map,
+            title: 'McDonald\'s'
+        });
+
+        var marker5 = new google.maps.Marker({
+            position: customer5,
+            map: map,
+            title: 'McDonald\'s'
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+        });
+        google.maps.event.addListener(marker2, 'click', function() {
+          infowindow2.open(map,marker2);
+        });
+        google.maps.event.addListener(marker3, 'click', function() {
+          infowindow3.open(map,marker3);
+        });
+        google.maps.event.addListener(marker4, 'click', function() {
+          infowindow4.open(map,marker4);
+        });
+        google.maps.event.addListener(marker5, 'click', function() {
+          infowindow5.open(map,marker5);
+        });
+
+      }
+
+      function handleNoGeolocation(errorFlag) {
+        if (errorFlag) {
+          var content = 'Error: The Geolocation service failed.';
+        } else {
+          var content = 'Error: Your browser doesn\'t support geolocation.';
+        }
+
+        var options = {
+          map: map,
+          position: new google.maps.LatLng(60, 105),
+          content: content
+        };
+
+        var infowindow = new google.maps.InfoWindow(options);
+        map.setCenter(options.position);
+      }
+
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
   </head>
   <body>
 
@@ -44,8 +196,11 @@
     <section id="content">
       <div class="container">
         <h2>Find some orders... <input type="button" value="Change Location" /></h2>
-        <iframe class="map" rameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Columbia%2C%20MO%2C%20United%20States&key=AIzaSyDx6Y87szgqxuzpOQGOB3jvL1TEehyJajI"></iframe>
-        <h2>Most Recent Orders</h2>
+        <!--
+        <iframe class="map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=11&center=38.9517%2C-92.3341&key=AIzaSyDx6Y87szgqxuzpOQGOB3jvL1TEehyJajI"></iframe> 
+        -->
+        <div id="map-canvas" class="map"></div>
+        <h2>Recent Orders</h2>
         <table class="orders">
           <thead>
             <tr>
@@ -147,83 +302,6 @@
               <td>$5.68</td>
               <td>4 Fountain Court</td>
               <td>63033</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>2</td>
-              <td>McDonald's</td>
-              <td>$7.53</td>
-              <td>1979 Emily Drive, Apt A</td>
-              <td>65401</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>3</td>
-              <td>McDonald's</td>
-              <td>$6.21</td>
-              <td>2008 Junipter Drive</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
-            </tr>
-            <tr class="clickableRow">
-              <td>4</td>
-              <td>McDonald's</td>
-              <td>$9.45</td>
-              <td>13431 Sunset Meadows Lane</td>
-              <td>63128</td>
             </tr>
           </tbody>
         </table>
