@@ -264,5 +264,25 @@ function PhonePull (req, res){
                   }
           res.send(phone);
 }
+
+function Deposit (amount,username){
+  var users= storage.getItem('users');
+    for(var i =0; i<users.length; i++){
+      if(username===users[i].username){
+        users[i].balance+=amount;
+        storage.setItem('users',users);}
+  }
+}
+
+function Withdrawl (amount,username){
+  var users= storage.getItem('users');
+    for(var i =0; i<users.length; i++){
+      if(username===users[i].username){
+        users[i].balance-=amount;
+        storage.setItem('users',users);}
+  }
+}
+
 app.get('/profpic/:username', ProfPic);
+
 app.get('/phonepull/:username',PhonePull);
