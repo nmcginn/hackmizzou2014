@@ -23,6 +23,13 @@ app.controller('SplashCtrl', ['$scope', '$http', function($scope) {
 
 }]);
 
+app.controller('LoginCtrl', ['$scope', '$http', function($scope) {
+    $scope.isLogin = true;
+    $scope.flipPage = function() {
+      $scope.isLogin = !$scope.isLogin;
+    }
+}]);
+
 app.controller('DetailsCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
   $http.get('_js/details.json').
