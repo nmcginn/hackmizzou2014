@@ -117,15 +117,16 @@ app.get('/acceptorder/:driver/:uuid', function(req, res) {
     var orders = storage.getItem('orders');
     var valid = false;
     for (var i = 0; i < orders.length; i++) {
-      if (orders.id === req.params.uuid) {
+      if (orders[i].id == req.params.uuid) {
         orders[i].status = 'Accepted';
         orders[i].driver = req.params.driver;
         valid = true;
       }
     }
     if (valid) {
+      console.log('sending twilio message');
       twilio.messages.create({
-        to: '+16302169653',
+        to: '+16302169653', // TODO: remove hardcoding
         from: '+16303184442',
         body: 'Your fLazy order has been accepted by a driver!',
       }, function(err, message) {
@@ -134,6 +135,8 @@ app.get('/acceptorder/:driver/:uuid', function(req, res) {
       });
       storage.setItem('orders',orders);
       res.send(200);
+    } else {
+      res.send(400);
     }
   } else {
     res.send(403);
