@@ -38,8 +38,7 @@
           <img src="_img/logo_colored.png" alt="logo" class="logo" />
         </div>
         <div class="clear"></div>
-        <!--
-        <form id="loginForm">
+        <form id="loginForm" ng-show="isLogin">
             <h2>Log In</h2>
             <fieldset id="inputs">
                 <input id="username" type="text" placeholder="Username" autofocus required>   
@@ -50,12 +49,11 @@
                 <input type="submit" id="submit" value="Log in">
               </div>
               <div class="column last">
-                <input type="button" id="register" value="Register">
+                <input type="button" id="register" ng-click="flipPage()" value="Register">
               </div>
             </fieldset>
         </form>
-        -->
-        <form id="registerForm">
+        <form id="registerForm" ng-hide="isLogin">
             <h2>Register</h2>
             <fieldset id="inputs">
               <div class="column first">
@@ -78,7 +76,7 @@
             </fieldset>
             <fieldset id="actions">
               <div class="column first">
-                <input type="button" id="backToLogin" value="Back to Login">
+                <input type="button" id="backToLogin" ng-click="flipPage()" value="Back to Login">
               </div>
               <div class="column last">
                 <input type="submit" id="submit" value="Create Account">
