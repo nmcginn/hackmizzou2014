@@ -25,7 +25,7 @@ app.post('/register', function(req, res) {
   new_user.rating = 0;
   if (new_user.id) {
     var sha = crypto.createHash('sha512');
-    console.log(new_user.password);
+    //console.log(new_user.password);
     sha.update(new_user.password);
     new_user.password = sha.digest('base64');
     users.push(new_user);
