@@ -10,6 +10,10 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: '_templates/driver_dash.html', 
       controller: 'DriverDashCtrl'
     })
+    .when('/hungry_dash', {
+      templateUrl: '_templates/hungry_dash.html', 
+      controller: 'HungryDashCtrl'
+    })
     .when('/account', {
       templateUrl: '_templates/account.html', 
       controller: 'AccountCtrl'

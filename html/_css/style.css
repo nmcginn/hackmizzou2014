@@ -171,6 +171,15 @@ a { text-decoration: none; }
 	color: #333;
 }
 
+.sidebar_content {
+    width: 67%;
+    padding-left: 25px;
+}
+
+.sidebar_content table.orders {
+    width: 100%;
+}
+
 .sidebar {
     float: right;
     width: 30%;
@@ -191,6 +200,22 @@ a { text-decoration: none; }
 .sidebar span.money {
     font-size: 200%;
     color: darkgreen;
+}
+
+.sidebar span.title {
+
+}
+
+.sidebar a.button {
+    display: block;
+    background-color: transparent;
+    border-bottom: 0px solid #ccc;
+    padding: 8px 0;
+    color: #7d6469;
+}
+
+.sidebar a.button:hover {
+    color: #000;
 }
 
 .sidebar span.hr {
@@ -320,9 +345,10 @@ table.orders tr.clickableRow:hover td {
     #nav .container { text-align: center; }
     #nav ul li a { padding: 25px 10px 15px; }
     #content h2 input[type="button"] { display: none; }
-    .sidebar { width: 100%;  float: none; }
+    .sidebar { width: 100%;  float: none; margin-bottom: 20px; }
     #account { width: 90%; }
     #account #actions .column {
         width: 100%;
     }
+    .sidebar_content { width: 95%; }
 }
