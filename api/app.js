@@ -179,11 +179,15 @@ app.post('/order/new', function(req, res) {
     var price = 0;
     for (var i = 0; i < newOrder.items.length; i++) {
         price = price + newOrder.items[i].count * newOrder.items[i].price;
-        priceTxt += '{"item":' + newOrder.items[i].item + ', "price":' + newOrder.items[i].price + '},';
+        priceTxt += '{"item":' + newOrder.items[i].item + ', "price":"' + newOrder.items[i].price + '"},';
     }   
-    price = price * 1.05 + 2.5; // $2.50 flat charge plus 5% extra
     
-    priceTxt += ']}';
+    priceTxt += '{"item":"flat rate", "price":"2.50"},' +
+                '{"item":"rate", "price":"' + price*1.05 + '"},';
+
+    price = price * 1.05 + 2.5; // $2.50 flat charge plus 5% extra
+    priceTxt += '{"total":"' + price + '"} ]}';
+
     var priceObj = JSON.parse(priceTxt);
 
     res.send(priceObj);
