@@ -49,7 +49,7 @@ app.get('/hash/:hash', function(req, res) {
 
 app.get('/restaurants', function(req, res) {
     res.set({'Content-Type':'application/json'});
-    res.send(storage.getItem(); // [TODO] return json file of all available restaraunts
+    res.send(storage.getItem('vendors'));
 });
 
 app.get('/menu/:restaurant', function(req, res) {
