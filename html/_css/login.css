@@ -109,3 +109,12 @@ html, body {
     #registerForm .column { width: 100%; float: none; }
     #registerForm input[type="submit"] { margin-top: 15px; }
 }
+
+@media screen and (max-width: 500px) {
+    #login img.logo {
+        display: none;
+    }
+    #loginForm, #registerForm { width: 98%; }
+    #loginForm .column { width: 100%; float: none; }
+    #loginForm input[type="submit"] { margin-bottom: 15px; }
+}
